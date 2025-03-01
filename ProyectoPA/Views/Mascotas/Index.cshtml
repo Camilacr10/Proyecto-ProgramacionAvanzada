@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ProyectoPA.Mascota>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.especie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.raza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.castrado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vacunado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desparasitado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_rescate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disponibilidad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.raza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.castrado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vacunado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desparasitado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_rescate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_imagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponibilidad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_mascota }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_mascota }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_mascota })
+        </td>
+    </tr>
+}
+
+</table>

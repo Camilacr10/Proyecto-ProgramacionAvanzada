@@ -1,0 +1,122 @@
+﻿@model ProyectoPA.Mascota
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mascota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.especie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.castrado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.castrado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vacunado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vacunado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desparasitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desparasitado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_rescate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_rescate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.disponibilidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disponibilidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_mascota }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

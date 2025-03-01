@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="salvando_unas_patitasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adopcion">
+          <Key>
+            <PropertyRef Name="id_adopcion" />
+          </Key>
+          <Property Name="id_adopcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_mascota" Type="int" Nullable="false" />
+          <Property Name="fecha_adopcion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donacion">
+          <Key>
+            <PropertyRef Name="id_donacion" />
+          </Key>
+          <Property Name="id_donacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="nombre_donante" Type="varchar" MaxLength="100" />
+          <Property Name="email_donante" Type="varchar" MaxLength="100" />
+          <Property Name="metodo_pago" Type="varchar" MaxLength="50" />
+          <Property Name="numero_tarjeta" Type="varchar" MaxLength="16" />
+          <Property Name="fecha_expiracion" Type="date" />
+          <Property Name="codigo_seguridad" Type="varchar" MaxLength="4" />
+          <Property Name="fecha_donacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="id_mascota" />
+          </Key>
+          <Property Name="id_mascota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="especie" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="raza" Type="varchar" MaxLength="100" />
+          <Property Name="peso" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="sexo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="castrado" Type="varchar" MaxLength="2" />
+          <Property Name="vacunado" Type="varchar" MaxLength="2" />
+          <Property Name="desparasitado" Type="varchar" MaxLength="2" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="fecha_rescate" Type="date" />
+          <Property Name="ruta_imagen" Type="varchar" MaxLength="255" />
+          <Property Name="disponibilidad" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Mascota_Requisito">
+          <Key>
+            <PropertyRef Name="id_mascota" />
+            <PropertyRef Name="id_requisito" />
+          </Key>
+          <Property Name="id_mascota" Type="int" Nullable="false" />
+          <Property Name="id_requisito" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Requisito">
+          <Key>
+            <PropertyRef Name="id_requisito" />
+          </Key>
+          <Property Name="id_requisito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="id_rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_rol" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" />
+          <Property Name="ruta_imagen" Type="varchar" MaxLength="255" />
+          <Property Name="activo" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <Association Name="FK__Adopcion__id_mas__48CFD27E">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+          <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="id_mascota" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="id_mascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adopcion__id_usu__47DBAE45">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota_R__id_ma__440B1D61">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Mascota_Requisito" Type="Self.Mascota_Requisito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="id_mascota" />
+            </Principal>
+            <Dependent Role="Mascota_Requisito">
+              <PropertyRef Name="id_mascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota_R__id_re__44FF419A">
+          <End Role="Requisito" Type="Self.Requisito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Mascota_Requisito" Type="Self.Mascota_Requisito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requisito">
+              <PropertyRef Name="id_requisito" />
+            </Principal>
+            <Dependent Role="Mascota_Requisito">
+              <PropertyRef Name="id_requisito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__id_rol__398D8EEE">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="salvando_unas_patitasModelStoreContainer">
+          <EntitySet Name="Adopcion" EntityType="Self.Adopcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donacion" EntityType="Self.Donacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mascota" EntityType="Self.Mascota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mascota_Requisito" EntityType="Self.Mascota_Requisito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requisito" EntityType="Self.Requisito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Adopcion__id_mas__48CFD27E" Association="Self.FK__Adopcion__id_mas__48CFD27E">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="Adopcion" EntitySet="Adopcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adopcion__id_usu__47DBAE45" Association="Self.FK__Adopcion__id_usu__47DBAE45">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Adopcion" EntitySet="Adopcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota_R__id_ma__440B1D61" Association="Self.FK__Mascota_R__id_ma__440B1D61">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota_R__id_re__44FF419A" Association="Self.FK__Mascota_R__id_re__44FF419A">
+            <End Role="Requisito" EntitySet="Requisito" />
+            <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__id_rol__398D8EEE" Association="Self.FK__Usuario__id_rol__398D8EEE">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="salvando_unas_patitasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adopcion">
+          <Key>
+            <PropertyRef Name="id_adopcion" />
+          </Key>
+          <Property Name="id_adopcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_mascota" Type="Int32" Nullable="false" />
+          <Property Name="fecha_adopcion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Mascota" Relationship="Self.FK__Adopcion__id_mas__48CFD27E" FromRole="Adopcion" ToRole="Mascota" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Adopcion__id_usu__47DBAE45" FromRole="Adopcion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Donacion">
+          <Key>
+            <PropertyRef Name="id_donacion" />
+          </Key>
+          <Property Name="id_donacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="nombre_donante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email_donante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="metodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numero_tarjeta" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" />
+          <Property Name="codigo_seguridad" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_donacion" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="id_mascota" />
+          </Key>
+          <Property Name="id_mascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="especie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="raza" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="peso" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="sexo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="castrado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="vacunado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="desparasitado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_rescate" Type="DateTime" Precision="0" />
+          <Property Name="ruta_imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="disponibilidad" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adopcions" Relationship="Self.FK__Adopcion__id_mas__48CFD27E" FromRole="Mascota" ToRole="Adopcion" />
+          <NavigationProperty Name="Requisitoes" Relationship="Self.Mascota_Requisito" FromRole="Mascota" ToRole="Requisito" />
+        </EntityType>
+        <EntityType Name="Requisito">
+          <Key>
+            <PropertyRef Name="id_requisito" />
+          </Key>
+          <Property Name="id_requisito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Mascotas" Relationship="Self.Mascota_Requisito" FromRole="Requisito" ToRole="Mascota" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__id_rol__398D8EEE" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_rol" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ruta_imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adopcions" Relationship="Self.FK__Adopcion__id_usu__47DBAE45" FromRole="Usuario" ToRole="Adopcion" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__id_rol__398D8EEE" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK__Adopcion__id_mas__48CFD27E">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+          <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="id_mascota" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="id_mascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adopcion__id_usu__47DBAE45">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Adopcion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__id_rol__398D8EEE">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Mascota_Requisito">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <End Role="Requisito" Type="Self.Requisito" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="salvando_unas_patitasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adopcions" EntityType="Self.Adopcion" />
+          <EntitySet Name="Donacions" EntityType="Self.Donacion" />
+          <EntitySet Name="Mascotas" EntityType="Self.Mascota" />
+          <EntitySet Name="Requisitoes" EntityType="Self.Requisito" />
+          <EntitySet Name="Rols" EntityType="Self.Rol" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Adopcion__id_mas__48CFD27E" Association="Self.FK__Adopcion__id_mas__48CFD27E">
+            <End Role="Mascota" EntitySet="Mascotas" />
+            <End Role="Adopcion" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adopcion__id_usu__47DBAE45" Association="Self.FK__Adopcion__id_usu__47DBAE45">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Adopcion" EntitySet="Adopcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__id_rol__398D8EEE" Association="Self.FK__Usuario__id_rol__398D8EEE">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Mascota_Requisito" Association="Self.Mascota_Requisito">
+            <End Role="Mascota" EntitySet="Mascotas" />
+            <End Role="Requisito" EntitySet="Requisitoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="salvando_unas_patitasModelStoreContainer" CdmEntityContainer="salvando_unas_patitasEntities">
+          <EntitySetMapping Name="Adopcions">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Adopcion">
+              <MappingFragment StoreEntitySet="Adopcion">
+                <ScalarProperty Name="id_adopcion" ColumnName="id_adopcion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_mascota" ColumnName="id_mascota" />
+                <ScalarProperty Name="fecha_adopcion" ColumnName="fecha_adopcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donacions">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Donacion">
+              <MappingFragment StoreEntitySet="Donacion">
+                <ScalarProperty Name="id_donacion" ColumnName="id_donacion" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="nombre_donante" ColumnName="nombre_donante" />
+                <ScalarProperty Name="email_donante" ColumnName="email_donante" />
+                <ScalarProperty Name="metodo_pago" ColumnName="metodo_pago" />
+                <ScalarProperty Name="numero_tarjeta" ColumnName="numero_tarjeta" />
+                <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
+                <ScalarProperty Name="codigo_seguridad" ColumnName="codigo_seguridad" />
+                <ScalarProperty Name="fecha_donacion" ColumnName="fecha_donacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mascotas">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Mascota">
+              <MappingFragment StoreEntitySet="Mascota">
+                <ScalarProperty Name="id_mascota" ColumnName="id_mascota" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="especie" ColumnName="especie" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="castrado" ColumnName="castrado" />
+                <ScalarProperty Name="vacunado" ColumnName="vacunado" />
+                <ScalarProperty Name="desparasitado" ColumnName="desparasitado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_rescate" ColumnName="fecha_rescate" />
+                <ScalarProperty Name="ruta_imagen" ColumnName="ruta_imagen" />
+                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requisitoes">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Requisito">
+              <MappingFragment StoreEntitySet="Requisito">
+                <ScalarProperty Name="id_requisito" ColumnName="id_requisito" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="ruta_imagen" ColumnName="ruta_imagen" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Mascota_Requisito" TypeName="salvando_unas_patitasModel.Mascota_Requisito" StoreEntitySet="Mascota_Requisito">
+            <EndProperty Name="Mascota">
+              <ScalarProperty Name="id_mascota" ColumnName="id_mascota" />
+            </EndProperty>
+            <EndProperty Name="Requisito">
+              <ScalarProperty Name="id_requisito" ColumnName="id_requisito" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
