@@ -1,0 +1,82 @@
+﻿@model ProyectoPA.Donacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Donacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_donante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_donante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_donante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_donante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.metodo_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.metodo_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_tarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_expiracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_expiracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_seguridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_seguridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_donacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_donacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_donacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

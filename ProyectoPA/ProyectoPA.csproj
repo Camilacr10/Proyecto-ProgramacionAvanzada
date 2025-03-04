@@ -130,8 +130,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdopcionsController.cs" />
+    <Compile Include="Controllers\DonacionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MascotasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Donacion.cs">
       <DependentUpon>mdlProyectoPA.tt</DependentUpon>
     </Compile>
@@ -187,6 +190,64 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\adopciones\adopciones.png" />
+    <Content Include="Imagenes\adopciones\banner.png" />
+    <Content Include="Imagenes\adopciones\fondoAdopciones.jpg" />
+    <Content Include="Imagenes\adopciones\fondoContacto.jfif" />
+    <Content Include="Imagenes\adopciones\fondoIndex.jpg" />
+    <Content Include="Imagenes\adopciones\gato4.png" />
+    <Content Include="Imagenes\adopciones\image %2848%29.png" />
+    <Content Include="Imagenes\adopciones\imgAdopciones.jpg" />
+    <Content Include="Imagenes\adopciones\imgGato.png" />
+    <Content Include="Imagenes\adopciones\imgGato1.jpg" />
+    <Content Include="Imagenes\adopciones\imgGato2.jpg" />
+    <Content Include="Imagenes\adopciones\imgPerro1.jpg" />
+    <Content Include="Imagenes\adopciones\logo.png" />
+    <Content Include="Imagenes\adopciones\logoFacebook.svg" />
+    <Content Include="Imagenes\adopciones\logoInsta.png" />
+    <Content Include="Imagenes\adopciones\logoPerfil.png" />
+    <Content Include="Imagenes\adopciones\logoTwitter.svg" />
+    <Content Include="Imagenes\adopciones\perro2.jpg" />
+    <Content Include="Imagenes\adopciones\perro3.png" />
+    <Content Include="Imagenes\adopciones\perroygato.png" />
+    <Content Include="Imagenes\adopciones\perroygato2.png" />
+    <Content Include="Imagenes\adopciones\servicios1.jpg" />
+    <Content Include="Imagenes\adopciones\servicios2.jpg" />
+    <Content Include="Imagenes\adopciones\servicios3.jpg" />
+    <Content Include="Imagenes\donaciones\dinero.png" />
+    <Content Include="Imagenes\donaciones\donaciones1.jpg" />
+    <Content Include="Imagenes\donaciones\donaciones2.jpg" />
+    <Content Include="Imagenes\donaciones\formulario-img.png" />
+    <Content Include="Imagenes\donaciones\mascotasBanner.png" />
+    <Content Include="Imagenes\donaciones\modal.png" />
+    <Content Include="Imagenes\gestion\generalGestion.png" />
+    <Content Include="Imagenes\inicioAdmin\GestionAdopciones.png" />
+    <Content Include="Imagenes\inicioAdmin\GestionDonaciones.png" />
+    <Content Include="Imagenes\inicioAdmin\GestionGatos.png" />
+    <Content Include="Imagenes\inicioAdmin\GestionPerros.png" />
+    <Content Include="Imagenes\inicioAdmin\GestionUsuarios.png" />
+    <Content Include="Imagenes\inicioAdmin\perroAdmin.png" />
+    <Content Include="Imagenes\perfilMascota\castracion.png" />
+    <Content Include="Imagenes\perfilMascota\desparasitacion.png" />
+    <Content Include="Imagenes\perfilMascota\edad.png" />
+    <Content Include="Imagenes\perfilMascota\peso.png" />
+    <Content Include="Imagenes\perfilMascota\sexo.png" />
+    <Content Include="Imagenes\perfilMascota\vacunacion.jpg" />
+    <Content Include="Imagenes\usuario\admin.png" />
+    <Content Include="Imagenes\usuario\configuracion.png" />
+    <Content Include="Imagenes\usuario\donar.png" />
+    <Content Include="Imagenes\usuario\gatos1.png.jpg" />
+    <Content Include="Imagenes\usuario\home.png" />
+    <Content Include="Imagenes\usuario\logo.png" />
+    <Content Include="Imagenes\usuario\mascota1.png" />
+    <Content Include="Imagenes\usuario\mascota2.png" />
+    <Content Include="Imagenes\usuario\mascota3.png" />
+    <Content Include="Imagenes\usuario\pergat.png" />
+    <Content Include="Imagenes\usuario\perritos.png" />
+    <Content Include="Imagenes\usuario\perritos2.png" />
+    <Content Include="Imagenes\usuario\plus.png" />
+    <Content Include="Imagenes\usuario\salir.png" />
+    <Content Include="Imagenes\usuario\soporte.png" />
     <Content Include="mdlProyectoPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>mdlProyectoPA.edmx</DependentUpon>
@@ -210,6 +271,7 @@
     <Content Include="mdlProyectoPA.edmx.diagram">
       <DependentUpon>mdlProyectoPA.edmx</DependentUpon>
     </Content>
+    <Content Include="Imagenes\adopciones\bannerAdopcion.webp" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -240,6 +302,21 @@
     <Content Include="Views\Mascotas\Details.cshtml" />
     <Content Include="Views\Mascotas\Edit.cshtml" />
     <Content Include="Views\Mascotas\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Adopcions\Create.cshtml" />
+    <Content Include="Views\Adopcions\Delete.cshtml" />
+    <Content Include="Views\Adopcions\Details.cshtml" />
+    <Content Include="Views\Adopcions\Edit.cshtml" />
+    <Content Include="Views\Adopcions\Index.cshtml" />
+    <Content Include="Views\Donacions\Create.cshtml" />
+    <Content Include="Views\Donacions\Delete.cshtml" />
+    <Content Include="Views\Donacions\Details.cshtml" />
+    <Content Include="Views\Donacions\Edit.cshtml" />
+    <Content Include="Views\Donacions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
