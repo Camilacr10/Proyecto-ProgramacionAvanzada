@@ -1,10 +1,9 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
-// La información general sobre un ensamblado se controla mediante lo siguiente
+﻿// La información general sobre un ensamblado se controla mediante lo siguiente
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
+using System.Reflection;
+using System.Runtime.InteropServices;
+
 [assembly: AssemblyTitle("ProyectoPA")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]

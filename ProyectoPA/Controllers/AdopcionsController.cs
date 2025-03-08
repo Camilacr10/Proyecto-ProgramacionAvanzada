@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ProyectoPA;
 
 namespace ProyectoPA.Controllers
 {
@@ -17,8 +12,15 @@ namespace ProyectoPA.Controllers
         // GET: Adopcions
         public ActionResult Index()
         {
-            var adopcions = db.Adopcions.Include(a => a.Mascota).Include(a => a.Usuario);
-            return View(adopcions.ToList());
+            var mascotasDisponibles = db.Mascotas
+                            .Where(m => m.disponibilidad == "SI") 
+                            .Select(m => new { id_mascota = m.id_mascota, nombre = m.nombre })
+                            .ToList();
+
+            ViewBag.MascotasDisponibles = new SelectList(mascotasDisponibles, "id_mascota", "nombre");
+
+
+            return View();
         }
 
         // GET: Adopcions/Details/5
