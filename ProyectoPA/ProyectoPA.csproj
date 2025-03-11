@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AdopcionsController.cs" />
     <Compile Include="Controllers\DonacionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListadoMController.cs" />
     <Compile Include="Controllers\MascotasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Donacion.cs">
@@ -187,6 +188,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\listadoMascotas-layout.css" />
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -314,6 +316,7 @@
     <Content Include="Views\Donacions\Details.cshtml" />
     <Content Include="Views\Donacions\Edit.cshtml" />
     <Content Include="Views\Donacions\Index.cshtml" />
+    <Content Include="Views\ListadoM\listado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
