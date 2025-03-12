@@ -1,22 +1,27 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using ProyectoPA;
 
 namespace ProyectoPA.Controllers
 {
-    public class UsuariosController : Controller
+    public class AdminUsuariosController : Controller
     {
         private salvando_unas_patitasEntities db = new salvando_unas_patitasEntities();
 
-        // GET: Usuarios
+        // GET: AdminUsuarios
         public ActionResult Index()
         {
             var usuarios = db.Usuarios.Include(u => u.Rol);
             return View(usuarios.ToList());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: AdminUsuarios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -31,14 +36,14 @@ namespace ProyectoPA.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Create
+        // GET: AdminUsuarios/Create
         public ActionResult Create()
         {
             ViewBag.id_rol = new SelectList(db.Rols, "id_rol", "nombre");
             return View();
         }
 
-        // POST: Usuarios/Create
+        // POST: AdminUsuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -56,7 +61,7 @@ namespace ProyectoPA.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: AdminUsuarios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -72,7 +77,7 @@ namespace ProyectoPA.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: AdminUsuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +94,7 @@ namespace ProyectoPA.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: AdminUsuarios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +109,7 @@ namespace ProyectoPA.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: AdminUsuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -122,6 +127,12 @@ namespace ProyectoPA.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //Se visualiza el menu de administrador
+        public ActionResult MenuAdmin()
+        {
+            return View();
         }
     }
 }

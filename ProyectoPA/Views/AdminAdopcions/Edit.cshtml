@@ -1,0 +1,56 @@
+﻿@model ProyectoPA.Adopcion
+
+@{
+    ViewBag.Title = "Editar Adopción";
+    Layout = "~/Views/AdminAdopcions/Layout_Admin_Adopciones.cshtml";
+}
+
+<!-- Sección de encabezado con imagen de fondo -->
+<section class="position-relative text-center text-white"
+         style="background-image: url('../../imagenes/gestion/generalgestion.png'); background-size: cover; background-position: center; height: 500px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(217, 142, 47, 0.5);"></div>
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+        <h1 class="m-0" style="font-size: 3em;">Gestión de Adopciones</h1>
+    </div>
+</section>
+
+<section class="container my-5">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Editar Adopción</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id_adopcion)
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.id_usuario, "Usuario", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("id_usuario", null, "Seleccionar Usuario", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.id_mascota, "Mascota", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("id_mascota", null, "Seleccionar Mascota", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_mascota, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.fecha_adopcion, htmlAttributes: new { @class = "form-label" })
+                @*Se puso un input porque el Html.EditorFor no muestra la fecha previamente seleccionada, y eso no nos funciona para la edición de registros.*@
+                <input type="date" class="form-control" name="fecha_adopcion" value="@Model.fecha_adopcion.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.fecha_adopcion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Guardar" class="btn btn-primary" style="background-color: #d98e2f; color: white;" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</section>

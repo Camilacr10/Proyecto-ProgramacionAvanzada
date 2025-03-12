@@ -1,88 +1,79 @@
 ﻿@model ProyectoPA.Donacion
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar Donación";
+    Layout = "~/Views/Donacions/Layout_Admin_Donaciones.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="text-center my-4">Eliminar Donación</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Donacion</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h3 class="text-danger">¿Está seguro que desea eliminar esta donación?</h3>
+<div class="card p-4 mb-4 d-flex flex-column align-items-center mx-auto" style="max-width: 800px;">
+    <h4 class="mb-3 text-center">Detalles de la Donación</h4>
+    <dl class="row d-flex justify-content-center">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.monto)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.monto)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.nombre_donante)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.nombre_donante)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.email_donante)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.email_donante)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.metodo_pago)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.metodo_pago)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.numero_tarjeta)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.numero_tarjeta)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.fecha_expiracion)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.fecha_expiracion)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.codigo_seguridad)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.codigo_seguridad)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.fecha_donacion)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.fecha_donacion)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger me-3" />
+            @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
         </div>
     }
 </div>

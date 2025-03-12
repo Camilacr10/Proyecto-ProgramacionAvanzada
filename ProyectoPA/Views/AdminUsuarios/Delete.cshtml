@@ -1,96 +1,87 @@
 ﻿@model ProyectoPA.Usuario
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar Usuario";
+    Layout = "~/Views/AdminUsuarios/Layout_Admin_Usuarios.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="text-center my-4">Eliminar Usuario</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Usuario</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h3 class="text-danger">¿Está seguro que desea eliminar este usuario?</h3>
+<div class="card p-4 mb-4 d-flex flex-column align-items-center mx-auto" style="max-width: 800px;">
+    <h4 class="mb-3 text-center">Detalles del Usuario</h4>
+    <dl class="row d-flex justify-content-center">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.username)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.username)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.password)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.password)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.nombre)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.nombre)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.apellido)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.apellido)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.correo)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.correo)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.telefono)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.telefono)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.ruta_imagen)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.ruta_imagen)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.activo)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.activo)
         </dd>
 
-        <dt>
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Rol.nombre)
         </dt>
-
-        <dd>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Rol.nombre)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger me-3" />
+            @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
         </div>
     }
 </div>
+

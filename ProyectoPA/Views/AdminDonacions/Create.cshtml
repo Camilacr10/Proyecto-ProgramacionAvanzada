@@ -1,0 +1,85 @@
+﻿@model ProyectoPA.Donacion
+
+@{
+    ViewBag.Title = "Crear Donación";
+    Layout = "~/Views/AdminDonacions/Layout_Admin_Donaciones.cshtml";
+}
+
+<!-- Sección de encabezado con imagen de fondo -->
+<section class="position-relative text-center text-white"
+         style="background-image: url('../../imagenes/gestion/generalgestion.png'); background-size: cover; background-position: center; height: 500px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(217, 142, 47, 0.5);"></div>
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+        <h1 class="m-0" style="font-size: 3em;">Gestión de Donaciones</h1>
+    </div>
+</section>
+
+<section class="container my-5">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Registrar Donación</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.monto, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.monto, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01" } })
+                @Html.ValidationMessageFor(model => model.monto, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.nombre_donante, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.nombre_donante, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre_donante, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.email_donante, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.email_donante, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                @Html.ValidationMessageFor(model => model.email_donante, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.metodo_pago, htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("metodo_pago", new SelectList(new[] { "Tarjeta", "PayPal", "Transferencia Bancaria" }), "Seleccionar Método", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.metodo_pago, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.numero_tarjeta, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.numero_tarjeta, new { htmlAttributes = new { @class = "form-control", type = "text", maxlength = "16" } })
+                @Html.ValidationMessageFor(model => model.numero_tarjeta, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.fecha_expiracion, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.fecha_expiracion, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.fecha_expiracion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.codigo_seguridad, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.codigo_seguridad, new { htmlAttributes = new { @class = "form-control", type = "password", maxlength = "4" } })
+                @Html.ValidationMessageFor(model => model.codigo_seguridad, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.fecha_donacion, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.fecha_donacion, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.fecha_donacion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Registrar" class="btn btn-primary" style="background-color: #d98e2f; color: white;" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</section>
+

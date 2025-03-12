@@ -1,0 +1,89 @@
+﻿@model ProyectoPA.Usuario
+
+@{
+    ViewBag.Title = "Crear Usuario";
+    Layout = "~/Views/AdminUsuarios/Layout_Admin_Usuarios.cshtml";
+}
+
+<!-- Sección de encabezado con imagen de fondo -->
+<section class="position-relative text-center text-white"
+         style="background-image: url('../../imagenes/gestion/generalgestion.png'); background-size: cover; background-position: center; height: 500px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(217, 142, 47, 0.5);"></div>
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+        <h1 class="m-0" style="font-size: 3em;">Gestión de Usuarios</h1>
+    </div>
+</section>
+
+<section class="container my-5">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Usuario</h4>
+            <hr />
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.id_rol, "Rol", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("id_rol", null, "Seleccionar Rol", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.apellido, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", type = "tel" } })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.ruta_imagen, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.ruta_imagen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ruta_imagen, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.activo, htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("activo", new SelectList(new[] { "Sí", "No" }), "Seleccionar Estado", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.activo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Crear" class="btn btn-primary" style="background-color: #d98e2f; color: white;" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</section>

@@ -1,21 +1,26 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using ProyectoPA;
 
 namespace ProyectoPA.Controllers
 {
-    public class DonacionsController : Controller
+    public class AdminDonacionsController : Controller
     {
         private salvando_unas_patitasEntities db = new salvando_unas_patitasEntities();
 
-        // GET: Donacions
+        // GET: AdminDonacions
         public ActionResult Index()
         {
             return View(db.Donacions.ToList());
         }
 
-        // GET: Donacions/Details/5
+        // GET: AdminDonacions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -30,13 +35,13 @@ namespace ProyectoPA.Controllers
             return View(donacion);
         }
 
-        // GET: Donacions/Create
+        // GET: AdminDonacions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Donacions/Create
+        // POST: AdminDonacions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -53,7 +58,7 @@ namespace ProyectoPA.Controllers
             return View(donacion);
         }
 
-        // GET: Donacions/Edit/5
+        // GET: AdminDonacions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -68,7 +73,7 @@ namespace ProyectoPA.Controllers
             return View(donacion);
         }
 
-        // POST: Donacions/Edit/5
+        // POST: AdminDonacions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -84,7 +89,7 @@ namespace ProyectoPA.Controllers
             return View(donacion);
         }
 
-        // GET: Donacions/Delete/5
+        // GET: AdminDonacions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -99,7 +104,7 @@ namespace ProyectoPA.Controllers
             return View(donacion);
         }
 
-        // POST: Donacions/Delete/5
+        // POST: AdminDonacions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -117,6 +122,13 @@ namespace ProyectoPA.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        //Se visualiza el menu de administrador
+        public ActionResult MenuAdmin()
+        {
+            return View();
         }
     }
 }

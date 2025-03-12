@@ -1,21 +1,27 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using ProyectoPA;
 
 namespace ProyectoPA.Controllers
 {
-    public class MascotasController : Controller
+
+    public class AdminMascotasController : Controller
     {
         private salvando_unas_patitasEntities db = new salvando_unas_patitasEntities();
 
-        // GET: Mascotas
+        // GET: AdminMascotas
         public ActionResult Index()
         {
             return View(db.Mascotas.ToList());
         }
 
-        // GET: Mascotas/Details/5
+        // GET: AdminMascotas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -30,13 +36,13 @@ namespace ProyectoPA.Controllers
             return View(mascota);
         }
 
-        // GET: Mascotas/Create
+        // GET: AdminMascotas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Mascotas/Create
+        // POST: AdminMascotas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -53,7 +59,7 @@ namespace ProyectoPA.Controllers
             return View(mascota);
         }
 
-        // GET: Mascotas/Edit/5
+        // GET: AdminMascotas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -68,7 +74,7 @@ namespace ProyectoPA.Controllers
             return View(mascota);
         }
 
-        // POST: Mascotas/Edit/5
+        // POST: AdminMascotas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -84,7 +90,7 @@ namespace ProyectoPA.Controllers
             return View(mascota);
         }
 
-        // GET: Mascotas/Delete/5
+        // GET: AdminMascotas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -99,7 +105,7 @@ namespace ProyectoPA.Controllers
             return View(mascota);
         }
 
-        // POST: Mascotas/Delete/5
+        // POST: AdminMascotas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -117,6 +123,13 @@ namespace ProyectoPA.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        //Se visualiza el menu de administrador
+        public ActionResult MenuAdmin()
+        {
+            return View();
         }
     }
 }

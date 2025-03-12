@@ -1,0 +1,105 @@
+﻿@model ProyectoPA.Mascota
+
+@{
+    ViewBag.Title = "Eliminar Mascota";
+    Layout = "~/Views/AdminMascotas/Layout_Admin_Mascota.cshtml";
+}
+
+<h2 class="text-center my-4">Eliminar Mascota</h2>
+
+<h3 class="text-danger">¿Está seguro que desea eliminar esta mascota?</h3>
+<div class="card p-4 mb-4 d-flex flex-column align-items-center mx-auto" style="max-width: 800px;">
+    <h4 class="mb-3 text-center">Detalles de la Mascota</h4>
+    <dl class="row d-flex justify-content-center">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.edad)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.edad)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.especie)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.especie)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.raza)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.raza)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.castrado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.castrado)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.vacunado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.vacunado)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.desparasitado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.desparasitado)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.fecha_rescate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.fecha_rescate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ruta_imagen)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ruta_imagen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger me-3" />
+            @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

@@ -130,12 +130,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminAdopcionsController.cs" />
+    <Compile Include="Controllers\AdminDonacionsController.cs" />
+    <Compile Include="Controllers\AdminMascotasController.cs" />
+    <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\AdopcionsController.cs" />
-    <Compile Include="Controllers\DonacionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListadoMController.cs" />
-    <Compile Include="Controllers\MascotasController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Donacion.cs">
       <DependentUpon>mdlProyectoPA.tt</DependentUpon>
     </Compile>
@@ -170,6 +171,34 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>mdlProyectoPA.tt</DependentUpon>
     </Compile>
+    <Content Include="Views\AdminAdopcions\Create.cshtml" />
+    <Content Include="Views\AdminAdopcions\Delete.cshtml" />
+    <Content Include="Views\AdminAdopcions\Details.cshtml" />
+    <Content Include="Views\AdminAdopcions\Edit.cshtml" />
+    <Content Include="Views\AdminAdopcions\Index.cshtml" />
+    <Content Include="Views\AdminAdopcions\Layout_Admin_Adopciones.cshtml" />
+    <Content Include="Views\AdminDonacions\Create.cshtml" />
+    <Content Include="Views\AdminDonacions\Delete.cshtml" />
+    <Content Include="Views\AdminDonacions\Details.cshtml" />
+    <Content Include="Views\AdminDonacions\Edit.cshtml" />
+    <Content Include="Views\AdminDonacions\Index.cshtml" />
+    <Content Include="Views\AdminDonacions\Layout_Admin_Donaciones.cshtml" />
+    <Content Include="Views\AdminMascotas\Create.cshtml" />
+    <Content Include="Views\AdminMascotas\Delete.cshtml" />
+    <Content Include="Views\AdminMascotas\Details.cshtml" />
+    <Content Include="Views\AdminMascotas\Edit.cshtml" />
+    <Content Include="Views\AdminMascotas\Index.cshtml" />
+    <Content Include="Views\AdminMascotas\Layout_Admin_Mascota.cshtml" />
+    <Content Include="Views\AdminUsuarios\Create.cshtml" />
+    <Content Include="Views\AdminUsuarios\Delete.cshtml" />
+    <Content Include="Views\AdminUsuarios\Details.cshtml" />
+    <Content Include="Views\AdminUsuarios\Edit.cshtml" />
+    <Content Include="Views\AdminUsuarios\Index.cshtml" />
+    <Content Include="Views\AdminUsuarios\Layout_Admin_Usuarios.cshtml" />
+    <Content Include="Views\AdminMascotas\MenuAdmin.cshtml" />
+    <Content Include="Views\AdminAdopcions\MenuAdmin.cshtml" />
+    <Content Include="Views\AdminDonacions\MenuAdmin.cshtml" />
+    <Content Include="Views\AdminUsuarios\MenuAdmin.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -301,22 +330,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Mascotas\Create.cshtml" />
-    <Content Include="Views\Mascotas\Delete.cshtml" />
-    <Content Include="Views\Mascotas\Details.cshtml" />
-    <Content Include="Views\Mascotas\Edit.cshtml" />
-    <Content Include="Views\Mascotas\Index.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
-    <Content Include="Views\Usuarios\Delete.cshtml" />
-    <Content Include="Views\Usuarios\Details.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Adopcions\Index.cshtml" />
-    <Content Include="Views\Donacions\Create.cshtml" />
-    <Content Include="Views\Donacions\Delete.cshtml" />
-    <Content Include="Views\Donacions\Details.cshtml" />
-    <Content Include="Views\Donacions\Edit.cshtml" />
-    <Content Include="Views\Donacions\Index.cshtml" />
     <Content Include="Views\ListadoM\listado.cshtml" />
   </ItemGroup>
   <ItemGroup>

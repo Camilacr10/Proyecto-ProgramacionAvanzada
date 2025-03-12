@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ProyectoPA.Mascota>
+
+@{
+    ViewBag.Title = "Gestión de Mascotas";
+    Layout = "~/Views/AdminMascotas/Layout_Admin_Mascota.cshtml";
+
+}
+
+<!-- Sección de encabezado con imagen de fondo -->
+<section class="position-relative text-center text-white"
+         style="background-image: url('../../imagenes/gestion/generalgestion.png'); background-size: cover; background-position: center; height: 500px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(217, 142, 47, 0.5);"></div>
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+        <h1 class="m-0" style="font-size: 3em;">Gestión de Mascotas</h1>
+    </div>
+</section>
+
+<!-- Sección de botón para agregar mascota -->
+<section class="py-4 bg-light">
+    <div class="container d-flex justify-content-between">
+        @Html.ActionLink("Agregar Mascota", "Create", "AdminMascotas", null, new { @class = "btn btn-block", style = "background-color: #d98e2f; color: #ffffff;" })
+        <div class="card text-center" style="background-color: #d98e2f; color: #ffffff; padding: 10px; width: 200px;">
+            <h5>Total de Mascotas</h5>
+            <h3 class="m-0"><i class="fas fa-paw"></i> @Model.Count()</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Tabla de gestión de mascotas-->
+<section id="mascota" class="py-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center text-white" style="background-color: #d98e2f;">
+                <h4>Listado de Mascotas</h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="text-white" style="background-color: #c98a27;">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.edad)</th>
+                            <th>@Html.DisplayNameFor(model => model.especie)</th>
+                            <th>@Html.DisplayNameFor(model => model.raza)</th>
+                            <th>@Html.DisplayNameFor(model => model.peso)</th>
+                            <th>@Html.DisplayNameFor(model => model.sexo)</th>
+                            <th>@Html.DisplayNameFor(model => model.castrado)</th>
+                            <th>@Html.DisplayNameFor(model => model.vacunado)</th>
+                            <th>@Html.DisplayNameFor(model => model.desparasitado)</th>
+                            <th>@Html.DisplayNameFor(model => model.fecha_rescate)</th>
+                            <th>@Html.DisplayNameFor(model => model.disponibilidad)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => item.edad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.especie)</td>
+                                <td>@Html.DisplayFor(modelItem => item.raza)</td>
+                                <td>@Html.DisplayFor(modelItem => item.peso)</td>
+                                <td>@Html.DisplayFor(modelItem => item.sexo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.castrado)</td>
+                                <td>@Html.DisplayFor(modelItem => item.vacunado)</td>
+                                <td>@Html.DisplayFor(modelItem => item.desparasitado)</td>
+                                <td>@Html.DisplayFor(modelItem => item.fecha_rescate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.disponibilidad)</td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.id_mascota }, new { @class = "btn btn-warning btn-sm" })
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_mascota }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
