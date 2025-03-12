@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminAdopcionsController.cs" />
     <Compile Include="Controllers\AdminDonacionsController.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AdminMascotasController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\AdopcionsController.cs" />
@@ -176,29 +177,23 @@
     <Content Include="Views\AdminAdopcions\Details.cshtml" />
     <Content Include="Views\AdminAdopcions\Edit.cshtml" />
     <Content Include="Views\AdminAdopcions\Index.cshtml" />
-    <Content Include="Views\AdminAdopcions\Layout_Admin_Adopciones.cshtml" />
     <Content Include="Views\AdminDonacions\Create.cshtml" />
     <Content Include="Views\AdminDonacions\Delete.cshtml" />
     <Content Include="Views\AdminDonacions\Details.cshtml" />
     <Content Include="Views\AdminDonacions\Edit.cshtml" />
     <Content Include="Views\AdminDonacions\Index.cshtml" />
-    <Content Include="Views\AdminDonacions\Layout_Admin_Donaciones.cshtml" />
     <Content Include="Views\AdminMascotas\Create.cshtml" />
     <Content Include="Views\AdminMascotas\Delete.cshtml" />
     <Content Include="Views\AdminMascotas\Details.cshtml" />
     <Content Include="Views\AdminMascotas\Edit.cshtml" />
     <Content Include="Views\AdminMascotas\Index.cshtml" />
-    <Content Include="Views\AdminMascotas\Layout_Admin_Mascota.cshtml" />
     <Content Include="Views\AdminUsuarios\Create.cshtml" />
     <Content Include="Views\AdminUsuarios\Delete.cshtml" />
     <Content Include="Views\AdminUsuarios\Details.cshtml" />
     <Content Include="Views\AdminUsuarios\Edit.cshtml" />
     <Content Include="Views\AdminUsuarios\Index.cshtml" />
-    <Content Include="Views\AdminUsuarios\Layout_Admin_Usuarios.cshtml" />
-    <Content Include="Views\AdminMascotas\MenuAdmin.cshtml" />
-    <Content Include="Views\AdminAdopcions\MenuAdmin.cshtml" />
-    <Content Include="Views\AdminDonacions\MenuAdmin.cshtml" />
-    <Content Include="Views\AdminUsuarios\MenuAdmin.cshtml" />
+    <Content Include="Views\AdminHome\MenuAdmin.cshtml" />
+    <Content Include="Views\AdminHome\Layout_Admin_Home.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
