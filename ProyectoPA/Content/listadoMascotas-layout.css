@@ -173,3 +173,81 @@ body, html {
     max-width: 100%;
     height: auto;
 }
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.mascotas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Espaciado más grande entre tarjetas */
+    max-width: 1000px; /* Limita el ancho total */
+    margin: 0 auto;
+}
+/* Tarjeta de Mascota */
+.mascota-card {
+    background: #FFCC66;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px; /* Más ancho */
+    height: 350px; /* Más alto */
+    position: relative;
+}
+/* Contenedor de imagen */
+.mascota-img-container {
+    width: 200px; /* Imagen más grande */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+/* Imagen */
+.mascota-img {
+    position: absolute;
+    width: 200px;
+    top: -3%;
+    left: 20%;
+    transform: translate(-30px, -20px); /* Ajusta la imagen según coordenadas */
+}
+/* Nombre */
+.mascota-nombre {
+    font-size: 20px; /* Nombre más grande */
+    font-weight: bold;
+    margin-top: 5px;
+}
+/* Contenedor del botón */
+.mascota-info {
+    background: white;
+    width: 100%;
+    border-radius: 20px;
+    padding: 15px 0;
+    position: absolute;
+    bottom: 0;
+}
+/* Botón */
+.info-btn {
+    background: #F57C00;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px; /* Botón más grande */
+    cursor: pointer;
+}
+
+    .info-btn:hover {
+        background: #E65100;
+    }

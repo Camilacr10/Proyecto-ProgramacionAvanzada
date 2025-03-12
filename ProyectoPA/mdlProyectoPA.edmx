@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="salvando_unas_patitasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="salvando_unas_patitasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adopcion">
           <Key>
             <PropertyRef Name="id_adopcion" />
@@ -84,7 +84,7 @@
           <Property Name="ruta_imagen" Type="varchar" MaxLength="255" />
           <Property Name="activo" Type="varchar" MaxLength="2" />
         </EntityType>
-        <Association Name="FK__Adopcion__id_mas__48CFD27E">
+        <Association Name="FK__Adopcion__id_mas__49C3F6B7">
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
           <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -96,7 +96,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adopcion__id_usu__47DBAE45">
+        <Association Name="FK__Adopcion__id_usu__48CFD27E">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +108,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota_R__id_ma__440B1D61">
+        <Association Name="FK__Mascota_R__id_ma__44FF419A">
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -122,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota_R__id_re__44FF419A">
+        <Association Name="FK__Mascota_R__id_re__45F365D3">
           <End Role="Requisito" Type="Self.Requisito" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -156,19 +156,19 @@
           <EntitySet Name="Requisito" EntityType="Self.Requisito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Adopcion__id_mas__48CFD27E" Association="Self.FK__Adopcion__id_mas__48CFD27E">
+          <AssociationSet Name="FK__Adopcion__id_mas__49C3F6B7" Association="Self.FK__Adopcion__id_mas__49C3F6B7">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="Adopcion" EntitySet="Adopcion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adopcion__id_usu__47DBAE45" Association="Self.FK__Adopcion__id_usu__47DBAE45">
+          <AssociationSet Name="FK__Adopcion__id_usu__48CFD27E" Association="Self.FK__Adopcion__id_usu__48CFD27E">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Adopcion" EntitySet="Adopcion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota_R__id_ma__440B1D61" Association="Self.FK__Mascota_R__id_ma__440B1D61">
+          <AssociationSet Name="FK__Mascota_R__id_ma__44FF419A" Association="Self.FK__Mascota_R__id_ma__44FF419A">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota_R__id_re__44FF419A" Association="Self.FK__Mascota_R__id_re__44FF419A">
+          <AssociationSet Name="FK__Mascota_R__id_re__45F365D3" Association="Self.FK__Mascota_R__id_re__45F365D3">
             <End Role="Requisito" EntitySet="Requisito" />
             <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
           </AssociationSet>
@@ -177,8 +177,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="salvando_unas_patitasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
