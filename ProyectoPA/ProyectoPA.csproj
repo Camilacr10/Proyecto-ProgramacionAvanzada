@@ -134,7 +134,6 @@
     <Compile Include="Controllers\AdminDonacionsController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AdminMascotasController.cs" />
-    <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\AdopcionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListadoMController.cs" />
@@ -187,11 +186,6 @@
     <Content Include="Views\AdminMascotas\Details.cshtml" />
     <Content Include="Views\AdminMascotas\Edit.cshtml" />
     <Content Include="Views\AdminMascotas\Index.cshtml" />
-    <Content Include="Views\AdminUsuarios\Create.cshtml" />
-    <Content Include="Views\AdminUsuarios\Delete.cshtml" />
-    <Content Include="Views\AdminUsuarios\Details.cshtml" />
-    <Content Include="Views\AdminUsuarios\Edit.cshtml" />
-    <Content Include="Views\AdminUsuarios\Index.cshtml" />
     <Content Include="Views\AdminHome\MenuAdmin.cshtml" />
     <Content Include="Views\AdminHome\Layout_Admin_Home.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
