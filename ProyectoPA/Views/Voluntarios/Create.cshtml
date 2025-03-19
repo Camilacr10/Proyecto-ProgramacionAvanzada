@@ -1,14 +1,30 @@
-﻿
-@model ProyectoPA.Voluntario
+﻿@model ProyectoPA.Voluntario
 
 @{
     ViewBag.Title = "Formulario de Voluntariado";
     Layout = "~/Views/AdminHome/Layout_Customer.cshtml";
-
 }
 
-<div class="container mt-5">
-    <div class="card shadow-lg p-4">
+<div class="position-relative">
+    <div class="d-flex justify-content-between align-items-center px-4 py-4" style="background-color: #FFBB33; border-radius: 10px;">
+        <div>
+            <h2 class="text-white fw-bold">Donaciones</h2>
+            <p class="text-white">¡Gracias por ayudarnos a continuar nuestra labor!</p>
+        </div>
+        <div>
+            <img src="~/imagenes/donaciones/mascotasBanner.png" alt="Perros y gatos" class="img-fluid" style="max-height: 150px;">
+        </div>
+    </div>
+
+    <div class="text-center py-5">
+        <h1>¡Tu contribución es muy importante!</h1>
+    </div>
+
+    <div class="card shadow-lg p-4 mt-5 position-relative" style="z-index: 1; max-width: 600px; margin: auto;">
+        <div class="position-absolute" style="top: -95px; right: -2px; z-index: 2;">
+            <img src="~/imagenes/donaciones/formulario-img.png" alt="Mascotas flotantes" class="img-fluid" style="max-height: 100px;">
+        </div>
+
         <h2 class="text-center">Formulario de Voluntariado</h2>
         @using (Html.BeginForm("Create", "Voluntarios", FormMethod.Post))
         {
@@ -51,7 +67,7 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-warning">Enviar</button>
+                <button type="submit" class="btn btn-danger">Enviar</button>
             </div>
         }
     </div>
