@@ -1,0 +1,62 @@
+﻿
+@model ProyectoPA.Voluntario
+
+@{
+    ViewBag.Title = "Formulario de Voluntariado";
+    Layout = "~/Views/AdminHome/Layout_Customer.cshtml";
+
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center">Formulario de Voluntariado</h2>
+        @using (Html.BeginForm("Create", "Voluntarios", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ingrese su nombre" })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Apellido)
+                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control", placeholder = "Ingrese su apellido" })
+                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Correo)
+                @Html.TextBoxFor(model => model.Correo, new { @class = "form-control", placeholder = "Ingrese su correo electrónico" })
+                @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Telefono)
+                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", placeholder = "Ingrese su teléfono" })
+                @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Edad)
+                @Html.TextBoxFor(model => model.Edad, new { @class = "form-control", type = "number", placeholder = "Ingrese su edad" })
+                @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Intereses)
+                @Html.TextAreaFor(model => model.Intereses, new { @class = "form-control", rows = 3, placeholder = "Escriba sus intereses" })
+                @Html.ValidationMessageFor(model => model.Intereses, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning">Enviar</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

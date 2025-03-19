@@ -15,6 +15,7 @@
         <AssociationConnector Association="salvando_unas_patitasModel.FK__Adopcion__id_usu__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="salvando_unas_patitasModel.FK__Usuario__id_rol__398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="salvando_unas_patitasModel.Mascota_Requisito" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="salvando_unas_patitasModel.Voluntario" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

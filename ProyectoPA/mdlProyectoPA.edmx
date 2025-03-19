@@ -24,7 +24,7 @@
           <Property Name="email_donante" Type="varchar" MaxLength="100" />
           <Property Name="metodo_pago" Type="varchar" MaxLength="50" />
           <Property Name="numero_tarjeta" Type="varchar" MaxLength="16" />
-          <Property Name="fecha_expiracion" Type="date" Nullable="false" />
+          <Property Name="fecha_expiracion" Type="date" />
           <Property Name="codigo_seguridad" Type="varchar" MaxLength="4" />
           <Property Name="fecha_donacion" Type="date" Nullable="false" />
         </EntityType>
@@ -43,7 +43,7 @@
           <Property Name="vacunado" Type="varchar" MaxLength="2" />
           <Property Name="desparasitado" Type="varchar" MaxLength="2" />
           <Property Name="descripcion" Type="text" />
-          <Property Name="fecha_rescate" Type="date" Nullable="false" />
+          <Property Name="fecha_rescate" Type="date" />
           <Property Name="ruta_imagen" Type="varchar" MaxLength="255" />
           <Property Name="disponibilidad" Type="varchar" MaxLength="2" />
         </EntityType>
@@ -84,7 +84,19 @@
           <Property Name="ruta_imagen" Type="varchar" MaxLength="255" />
           <Property Name="activo" Type="varchar" MaxLength="2" />
         </EntityType>
-        <Association Name="FK__Adopcion__id_mas__48CFD27E">
+        <EntityType Name="Voluntarios">
+          <Key>
+            <PropertyRef Name="Id_Voluntario" />
+          </Key>
+          <Property Name="Id_Voluntario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Intereses" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Adopcion__id_mas__5AEE82B9">
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
           <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -96,7 +108,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adopcion__id_usu__47DBAE45">
+        <Association Name="FK__Adopcion__id_usu__59FA5E80">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Adopcion" Type="Self.Adopcion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +120,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota_R__id_ma__440B1D61">
+        <Association Name="FK__Mascota_R__id_ma__5629CD9C">
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -122,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota_R__id_re__44FF419A">
+        <Association Name="FK__Mascota_R__id_re__571DF1D5">
           <End Role="Requisito" Type="Self.Requisito" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -136,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__id_rol__398D8EEE">
+        <Association Name="FK__Usuario__id_rol__4BAC3F29">
           <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,23 +168,24 @@
           <EntitySet Name="Requisito" EntityType="Self.Requisito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Adopcion__id_mas__48CFD27E" Association="Self.FK__Adopcion__id_mas__48CFD27E">
+          <EntitySet Name="Voluntarios" EntityType="Self.Voluntarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Adopcion__id_mas__5AEE82B9" Association="Self.FK__Adopcion__id_mas__5AEE82B9">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="Adopcion" EntitySet="Adopcion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adopcion__id_usu__47DBAE45" Association="Self.FK__Adopcion__id_usu__47DBAE45">
+          <AssociationSet Name="FK__Adopcion__id_usu__59FA5E80" Association="Self.FK__Adopcion__id_usu__59FA5E80">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Adopcion" EntitySet="Adopcion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota_R__id_ma__440B1D61" Association="Self.FK__Mascota_R__id_ma__440B1D61">
+          <AssociationSet Name="FK__Mascota_R__id_ma__5629CD9C" Association="Self.FK__Mascota_R__id_ma__5629CD9C">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota_R__id_re__44FF419A" Association="Self.FK__Mascota_R__id_re__44FF419A">
+          <AssociationSet Name="FK__Mascota_R__id_re__571DF1D5" Association="Self.FK__Mascota_R__id_re__571DF1D5">
             <End Role="Requisito" EntitySet="Requisito" />
             <End Role="Mascota_Requisito" EntitySet="Mascota_Requisito" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__id_rol__398D8EEE" Association="Self.FK__Usuario__id_rol__398D8EEE">
+          <AssociationSet Name="FK__Usuario__id_rol__4BAC3F29" Association="Self.FK__Usuario__id_rol__4BAC3F29">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
@@ -202,7 +215,7 @@
           <Property Name="email_donante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="metodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="numero_tarjeta" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" />
           <Property Name="codigo_seguridad" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fecha_donacion" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
@@ -221,7 +234,7 @@
           <Property Name="vacunado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="desparasitado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_rescate" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="fecha_rescate" Type="DateTime" Precision="0" />
           <Property Name="ruta_imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="disponibilidad" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Adopcions" Relationship="Self.FK__Adopcion__id_mas__48CFD27E" FromRole="Mascota" ToRole="Adopcion" />
@@ -323,7 +336,20 @@
             <End Role="Mascota" EntitySet="Mascotas" />
             <End Role="Requisito" EntitySet="Requisitoes" />
           </AssociationSet>
+          <EntitySet Name="Voluntarios" EntityType="salvando_unas_patitasModel.Voluntario" />
         </EntityContainer>
+        <EntityType Name="Voluntario">
+          <Key>
+            <PropertyRef Name="Id_Voluntario" />
+          </Key>
+          <Property Name="Id_Voluntario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Intereses" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -415,6 +441,19 @@
               <ScalarProperty Name="id_requisito" ColumnName="id_requisito" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Voluntarios">
+            <EntityTypeMapping TypeName="salvando_unas_patitasModel.Voluntario">
+              <MappingFragment StoreEntitySet="Voluntarios">
+                <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Voluntario" ColumnName="Id_Voluntario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

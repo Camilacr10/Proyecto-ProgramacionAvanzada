@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminHome/Layout_Customer.cshtml";
+}
+
+<!-- Sección de donaciones con imagen de fondo -->
+<section class="donaciones-header d-flex align-items-center">
+    <div class="container text-white">
+        <h1 class="fw-bold">Donaciones</h1>
+        <p class="fs-4">¡Gracias por ayudarnos a continuar nuestra labor!</p>
+    </div>
+</section>
+
+<!-- Sección de contenido -->
+<section class="container my-5">
+    <div class="row align-items-center">
+        <!-- Imagen a la izquierda -->
+        <div class="col-md-6 text-center animate__animated animate__fadeInLeft">
+            <img src="~/imagenes/donaciones/donaciones1.jpg" class="img-fluid rounded shadow-lg" alt="Donaciones">
+        </div>
+        <!-- Texto a la derecha -->
+        <div class="col-md-6 animate__animated animate__fadeInRight">
+            <p class="fs-5"><strong>¡Tu apoyo hace la diferencia!</strong> Cada donación que recibimos nos ayuda a proporcionar un refugio seguro, atención médica y amor a los animales que esperan un hogar.</p>
+            <p class="fs-5">Gracias a tu generosidad, aseguramos que cada mascota reciba los cuidados veterinarios necesarios, alimentos de calidad y suministros esenciales. También apoyas nuestras iniciativas de adopción y campañas de educación sobre bienestar animal.</p>
+        </div>
+    </div>
+    <div class="row align-items-center mb-5 animate__animated animate__fadeInRight">
+        <div class="col-md-6 order-md-2 text-center">
+            <img src="~/imagenes/donaciones/donaciones2.jpg" class="img-fluid rounded shadow-lg" alt="Servicio de Adopción de Gatos">
+        </div>
+        <div class="col-md-6 order-md-1">
+            <p class="fs-5">Tus donaciones permiten que nuestro refugio continúe operando y ofreciendo a los animales el cuidado que merecen. Gracias a tu generosidad, podemos realizar mejoras en nuestras instalaciones, proporcionar enriquecimiento y socialización a nuestros peluditos.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de opciones de donaciones -->
+<section class="container my-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-3 mx-2 p-3 rounded shadow-lg text-center opcion-donacion" style="background-color: #f4b400;">
+            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                <img src="~/imagenes/donaciones/dinero.png" alt="Donaciones Monetarias" class="img-fluid" style="width: 60px;">
+            </div>
+            <h4>Donaciones Monetarias</h4>
+            <a href="/donaciones/donacionesmonetarias" class="btn btn-danger">Donar</a>
+        </div>
+        <div class="col-md-3 mx-2 p-3 rounded shadow-lg text-center opcion-donacion" style="background-color: #e65c00;">
+            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                <img src="~/imagenes/donaciones/icono_voluntariado.png" alt="Voluntariado" class="img-fluid" style="width: 60px;">
+            </div>
+            <h4>Voluntariado</h4>
+            <a href="/voluntarios/index" class="btn btn-warning">Inscribirse</a>
+        </div>
+        <div class="col-md-3 mx-2 p-3 rounded shadow-lg text-center opcion-donacion" style="background-color: #f4b400;">
+            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                <img src="~/imagenes/donaciones/icono_insumos.png" alt="Donaciones de Insumos" class="img-fluid" style="width: 60px;">
+            </div>
+            <h4>Donaciones de Insumos</h4>
+            <a href="#" class="btn btn-danger">Donar</a>
+        </div>
+    </div>
+</section>
+
+<!-- Agregar animaciones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<!-- Estilos personalizados -->
+<style>
+    .donaciones-header {
+        background: url('/imagenes/adopciones/fondoAdopciones.jpg') no-repeat center center;
+        background-size: cover;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding-left: 50px;
+        color: white;
+    }
+
+        .donaciones-header h1, .donaciones-header p {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+    .opcion-donacion {
+        min-height: 260px;
+        padding: 25px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .opcion-donacion img {
+            margin-bottom: 5px;
+        }
+
+        .opcion-donacion h4 {
+            margin-bottom: 15px;
+        }
+</style>

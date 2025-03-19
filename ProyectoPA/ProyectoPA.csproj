@@ -135,8 +135,10 @@
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AdminMascotasController.cs" />
     <Compile Include="Controllers\AdopcionsController.cs" />
+    <Compile Include="Controllers\DonacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListadoMController.cs" />
+    <Compile Include="Controllers\VoluntariosController.cs" />
     <Compile Include="Donacion.cs">
       <DependentUpon>mdlProyectoPA.tt</DependentUpon>
     </Compile>
@@ -171,6 +173,9 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>mdlProyectoPA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Voluntario.cs">
+      <DependentUpon>mdlProyectoPA.tt</DependentUpon>
+    </Compile>
     <Content Include="Views\AdminAdopcions\Create.cshtml" />
     <Content Include="Views\AdminAdopcions\Delete.cshtml" />
     <Content Include="Views\AdminAdopcions\Details.cshtml" />
@@ -188,7 +193,10 @@
     <Content Include="Views\AdminMascotas\Index.cshtml" />
     <Content Include="Views\AdminHome\MenuAdmin.cshtml" />
     <Content Include="Views\AdminHome\Layout_Admin_Home.cshtml" />
+    <Content Include="Views\AdminHome\Layout_Customer.cshtml" />
+    <Content Include="Views\Donaciones\Index.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
+    <Content Include="Views\Voluntarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

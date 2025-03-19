@@ -1,33 +1,49 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/AdminHome/Layout_Customer.cshtml";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
-
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+<!-- Sección de bienvenida con imagen destacada -->
+<section class="position-relative text-white d-flex align-items-center" style="background: url('/imagenes/adopciones/fondoIndex.jpg') center/cover no-repeat; height: 70vh;">
+    <div class="container">
+        <div class="p-4" style="background: rgba(0, 0, 0, 0.5); border-radius: 10px; display: inline-block; max-width: 500px; text-align: left;">
+            <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">Tú debes ser el cambio que deseas ver en el mundo</h1>
+            <a href="#servicios" class="btn btn-lg mt-3 text-white animate__animated animate__zoomIn" style="background-color: #d98e2f; padding: 12px 24px; font-size: 1.2rem;">Contáctanos</a>
+        </div>
     </div>
-</main>
+</section>
+
+<!-- Sección de servicios -->
+<section id="servicios" class="container my-5">
+    <h2 class="text-center mb-4">Nuestros servicios</h2>
+    <div class="row align-items-center mb-5 animate__animated animate__fadeInLeft">
+        <div class="col-md-6 text-center">
+            <img src="~/imagenes/adopciones/servicios1.jpg" class="img-fluid rounded shadow-lg" alt="Servicio de Adopción">
+        </div>
+        <div class="col-md-6">
+            <h3 class="fw-bold">¡Ofrecemos Servicio de Adopción de Perros!</h3>
+            <p>Si estás buscando un amigo fiel y amoroso, nuestro servicio de adopción te conecta con perritos que buscan un hogar lleno de cariño. Ayudamos a perros rescatados a encontrar familias responsables y amorosas. ¡Adopta y haz la diferencia en la vida de un perro hoy!</p>
+        </div>
+    </div>
+    <div class="row align-items-center mb-5 animate__animated animate__fadeInRight">
+        <div class="col-md-6 order-md-2 text-center">
+            <img src="~/imagenes/adopciones/servicios2.jpg" class="img-fluid rounded shadow-lg" alt="Servicio de Adopción de Gatos">
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h3 class="fw-bold">¡Ofrecemos Servicio de Adopción de Gatos!</h3>
+            <p>Si buscas un compañero independiente y cariñoso, nuestro servicio de adopción te conecta con gatos que esperan un hogar lleno de amor. Cada gato tiene su propia personalidad única y está listo para compartir su vida contigo. ¡Adopta y transforma la vida de un gato hoy mismo!</p>
+        </div>
+    </div>
+    <div class="row align-items-center mb-5 animate__animated animate__fadeInLeft">
+        <div class="col-md-6 text-center">
+            <img src="~/imagenes/adopciones/servicios3.jpg" class="img-fluid rounded shadow-lg" alt="Donaciones">
+        </div>
+        <div class="col-md-6">
+            <h3 class="fw-bold">¡Haz una Donación y Cambia Vidas!</h3>
+            <p>Tu generosidad puede marcar la diferencia. Con tu donación, ayudas a brindar refugio, alimento y atención médica a animales necesitados, dándoles una segunda oportunidad de encontrar un hogar amoroso. Cada contribución, por pequeña que sea, tiene un gran impacto. ¡Únete a nuestra causa y sé parte del cambio hoy mismo!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Agregar animaciones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">

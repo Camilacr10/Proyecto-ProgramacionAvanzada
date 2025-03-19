@@ -31,5 +31,6 @@ namespace ProyectoPA
         public virtual DbSet<Requisito> Requisitoes { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Voluntario> Voluntarios { get; set; }
     }
 }
