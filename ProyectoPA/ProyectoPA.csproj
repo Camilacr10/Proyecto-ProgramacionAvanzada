@@ -195,6 +195,8 @@
     <Content Include="Views\AdminHome\Layout_Admin_Home.cshtml" />
     <Content Include="Views\AdminHome\Layout_Customer.cshtml" />
     <Content Include="Views\Donaciones\Index.cshtml" />
+    <Content Include="Views\Donaciones\Create.cshtml" />
+    <Content Include="Views\Donaciones\Confirmacion.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
     <Content Include="Views\Voluntarios\Create.cshtml" />
   </ItemGroup>

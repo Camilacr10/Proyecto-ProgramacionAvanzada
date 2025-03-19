@@ -11,31 +11,15 @@ namespace ProyectoPA
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Voluntario
     {
-        [Key]
         public int Id_Voluntario { get; set; }
-
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        [StringLength(100)]
         public string Nombre { get; set; }
-
-        [Required(ErrorMessage = "El apellido es obligatorio")]
-        [StringLength(100)]
         public string Apellido { get; set; }
-
-        [Required(ErrorMessage = "El correo es obligatorio")]
-        [EmailAddress(ErrorMessage = "Correo electrónico inválido")]
         public string Correo { get; set; }
-
-        [Phone(ErrorMessage = "Número de teléfono inválido")]
         public string Telefono { get; set; }
-
-        [Range(18, 100, ErrorMessage = "Debe ser mayor de 18 años")]
-        public int Edad { get; set; }
-
+        public Nullable<int> Edad { get; set; }
         public string Intereses { get; set; }
     }
 }
