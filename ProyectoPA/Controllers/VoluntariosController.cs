@@ -30,7 +30,7 @@ namespace ProyectoPA.Controllers
             {
                 db.Voluntarios.Add(voluntario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Donaciones");
             }
             return View(voluntario);
         }

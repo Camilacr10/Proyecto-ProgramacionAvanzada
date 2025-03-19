@@ -196,7 +196,7 @@
     <Content Include="Views\AdminHome\Layout_Customer.cshtml" />
     <Content Include="Views\Donaciones\Index.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
-    <Content Include="Views\Voluntarios\Index.cshtml" />
+    <Content Include="Views\Voluntarios\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
