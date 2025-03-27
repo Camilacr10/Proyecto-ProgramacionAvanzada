@@ -28,6 +28,7 @@
                     <li class="nav-item">@Html.ActionLink("Gestión de Mascotas", "Index", "AdminMascotas", new { area = "" }, new { @class = "nav-link text-light" })</li>
                     <li class="nav-item">@Html.ActionLink("Gestión de Adopciones", "Index", "AdminAdopcions", new { area = "" }, new { @class = "nav-link text-light" })</li>
                     <li class="nav-item">@Html.ActionLink("Gestión de Donaciones", "Index", "AdminDonacions", new { area = "" }, new { @class = "nav-link text-light" })</li>
+                    <li class="nav-item"><a href="@Url.Action("Login", "Usuarios")" class="btn text-white animate__animated animate__zoomIn nav-link" style="background-color: #d98e2f; border-radius: 20px;">Iniciar Sesión</a></li>
                 </ul>
             </div>
         </nav>
