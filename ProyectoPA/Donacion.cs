@@ -20,7 +20,7 @@ namespace ProyectoPA
         public string email_donante { get; set; }
         public string metodo_pago { get; set; }
         public string numero_tarjeta { get; set; }
-        public Nullable<System.DateTime> fecha_expiracion { get; set; }
+        public System.DateTime fecha_expiracion { get; set; }
         public string codigo_seguridad { get; set; }
         public System.DateTime fecha_donacion { get; set; }
     }
