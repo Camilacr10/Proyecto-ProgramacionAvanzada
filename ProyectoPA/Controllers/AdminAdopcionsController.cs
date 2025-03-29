@@ -17,8 +17,17 @@ namespace ProyectoPA.Controllers
         // GET: AdminAdopcions
         public ActionResult Index()
         {
-            var adopcions = db.Adopcions.Include(a => a.Mascota).Include(a => a.Usuario);
-            return View(adopcions.ToList());
+            //Se implementa un try-catch para manejar errores
+            try
+            {
+                var adopcions = db.Adopcions.Include(a => a.Mascota).Include(a => a.Usuario);
+                return View(adopcions.ToList());
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Error: No se pudieron cargar las adopciones.";
+                return View(); // Regresa la vista pero con mensaje de error
+            }
         }
 
         // GET: AdminAdopcions/Details/5
