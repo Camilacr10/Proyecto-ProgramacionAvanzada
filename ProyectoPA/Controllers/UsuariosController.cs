@@ -10,6 +10,8 @@ using ProyectoPA;
 using System.Web.Security;
 using System.Security.Cryptography;
 using System.Text;
+using System.Reflection;
+using System.IO;
 
 namespace ProyectoPA.Controllers
 {
@@ -123,6 +125,105 @@ namespace ProyectoPA.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AboutMe()
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            int userId = (int)Session["UserId"];
+            var usuario = db.Usuarios.Find(userId);
+
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(usuario);
+        }
+
+        [HttpPost]
+        //[Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateProfile(Usuario usuario, HttpPostedFileBase profilePicture)
+        {
+            // Obtener el usuario actual de la base de datos
+            var usuarioActual = db.Usuarios.FirstOrDefault(u => u.username == User.Identity.Name);
+
+            if (usuarioActual == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Actualizar imagen si se proporcionó
+                if (profilePicture != null && profilePicture.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(profilePicture.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Imagenes/usuario/"), fileName);
+                    profilePicture.SaveAs(path);
+                    usuarioActual.ruta_imagen = "~/Imagenes/usuario/" + fileName;
+                }
+
+                // Actualizar otros campos
+                usuarioActual.nombre = usuario.nombre;
+                usuarioActual.apellido = usuario.apellido;
+                usuarioActual.correo = usuario.correo;
+                usuarioActual.telefono = usuario.telefono;
+
+                db.Entry(usuarioActual).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("AboutMe");
+            }
+
+            return View("AboutMe", usuarioActual);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(string currentPassword, string newPassword, string confirmPassword)
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            int userId = (int)Session["UserId"];
+            var usuario = db.Usuarios.Find(userId);
+
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Validar que las nuevas contraseñas coincidan
+            if (newPassword != confirmPassword)
+            {
+                ModelState.AddModelError("", "Las nuevas contraseñas no coinciden.");
+                return View("AboutMe", usuario);
+            }
+
+            // Verificar contraseña actual
+            string hashedCurrentPassword = HashPassword(currentPassword);
+            if (usuario.password != hashedCurrentPassword)
+            {
+                ModelState.AddModelError("", "La contraseña actual es incorrecta.");
+                return View("AboutMe", usuario);
+            }
+
+            // Actualizar contraseña
+            usuario.password = HashPassword(newPassword);
+            db.Entry(usuario).State = EntityState.Modified;
+            db.SaveChanges();
+
+            // Mensaje de éxito
+            TempData["SuccessMessage"] = "Contraseña actualizada correctamente.";
+            return RedirectToAction("AboutMe");
+        }
+
         // GET: Usuarios/Login
         public ActionResult Login()
         {
@@ -140,10 +241,12 @@ namespace ProyectoPA.Controllers
                 string hashedPassword = HashPassword(modelo.password);
 
                 var usuario = db.Usuarios
-                    .FirstOrDefault(u => u.correo == modelo.correo && u.password == modelo.password);
+                    .FirstOrDefault(u => u.correo == modelo.correo && u.password == hashedPassword);
                 if (usuario != null)
                 {
-                    FormsAuthentication.SetAuthCookie(usuario.username, Convert.ToBoolean(modelo.activo));
+                    Session.Clear();
+                    Session["UserId"] = usuario.id_usuario; // Almacenar ID en sesión
+                    FormsAuthentication.SetAuthCookie(usuario.correo, false); // Usar correo como identificador
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "El nombre de usuario o la contraseña son incorrectos.");
@@ -179,6 +282,10 @@ namespace ProyectoPA.Controllers
                 usuario.ruta_imagen = "~/Imagenes/usuario/" + fileName;
             }
 
+            // Encriptar la contraseña ingresada
+            string hashedPassword = HashPassword(usuario.password);
+            usuario.password = hashedPassword;
+
             if (ModelState.IsValid)
             {
                 db.Usuarios.Add(usuario);
@@ -188,6 +295,20 @@ namespace ProyectoPA.Controllers
 
             ViewBag.id_rol = new SelectList(db.Rols, "id_rol", "nombre", usuario.id_rol);
             return View(usuario);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            // Limpiar la sesión
+            Session.Clear();
+
+            // Eliminar la cookie de autenticación
+            FormsAuthentication.SignOut();
+
+            // Redirigir a la página de login
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

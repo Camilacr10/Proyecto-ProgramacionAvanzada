@@ -206,6 +206,14 @@
     <Content Include="Views\AdminVoluntarios\Index.cshtml" />
     <None Include="Views\ListadoM\Detalles.cshtml" />
     <Content Include="Views\Voluntarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\AboutMe.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Usuarios\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -343,7 +351,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

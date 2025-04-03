@@ -1,0 +1,314 @@
+﻿@model ProyectoPA.Usuario
+@{
+    ViewBag.Title = "Perfil de Usuario";
+}
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="margin:0;">
+    <!-- Menú lateral mejorado -->
+    <div style="position:fixed;top:0;left:0;width:250px;height:100%;background-color:#f8f9fa;display:flex;flex-direction:column;box-shadow:2px 0 5px rgba(0,0,0,0.1);z-index:100;">
+        <!-- Logo en la parte superior -->
+        <div style="text-align:center;padding:20px 0;">
+            <img src="~/Imagenes/adopciones/logo.png" alt="Logo" style="max-width:200px;height:auto;">
+        </div>
+
+        <!-- Elementos principales del menú -->
+        <div style="flex:1;padding:20px 15px;overflow-y:auto;">
+            <a href="@Url.Action("Index", "Home")" style="display:flex;align-items:center;padding:12px 15px;margin-bottom:5px;border-radius:8px;text-decoration:none;color:#333;transition:background-color 0.3s;font-weight:500;">
+                <img src="~/Imagenes/usuario/home.png" alt="Home" style="width:20px;height:20px;margin-right:12px;">
+                <span>Home</span>
+            </a>
+            <a href="@Url.Action("Index", "AdminDonacions")" style="display: flex; align-items: center; padding: 12px 15px; margin-bottom: 5px; border-radius: 8px; text-decoration: none; color: #333; transition: background-color 0.3s; font-weight: 500;">
+                <img src="~/Imagenes/usuario/donar.png" alt="Donaciones" style="width:20px;height:20px;margin-right:12px;">
+                <span>Donaciones</span>
+            </a>
+            <a href="@Url.Action("MenuAdmin", "AdminHome")" style="display: flex; align-items: center; padding: 12px 15px; margin-bottom: 5px; border-radius: 8px; text-decoration: none; color: #333; transition: background-color 0.3s; font-weight: 500;">
+                <img src="~/Imagenes/usuario/admin.png" alt="Reportes" style="width:20px;height:20px;margin-right:12px;">
+                <span>Reportes</span>
+            </a>
+            <a href="@Url.Action("MenuAdmin", "AdminHome")" style="display: flex; align-items: center; padding: 12px 15px; margin-bottom: 5px; border-radius: 8px; text-decoration: none; color: #333; transition: background-color 0.3s; font-weight: 500;">
+                <img src="~/Imagenes/usuario/admin.png" alt="Administrador" style="width:20px;height:20px;margin-right:12px;">
+                <span>Modo Administrador</span>
+            </a>
+        </div>
+
+        <!-- Elementos de la parte inferior del menú -->
+        <div style="padding:15px;border-top:1px solid #e0e0e0;">
+            <a href="#" style="display: flex; align-items: center; padding: 12px 15px; margin-bottom: 0; border-radius: 8px; text-decoration: none; color: #333; transition: background-color 0.3s; font-weight: 500;">
+                <img src="~/Imagenes/usuario/soporte.png" alt="Soporte" style="width:20px;height:20px;margin-right:12px;">
+                <span>Soporte</span>
+            </a>
+            <a href="@Url.Action("Index", "Usuarios")" style="display: flex; align-items: center; padding: 12px 15px; margin-bottom: 0; border-radius: 8px; text-decoration: none; color: #333; transition: background-color 0.3s; font-weight: 500;">
+                <img src="~/Imagenes/usuario/configuracion.png" alt="Configuración" style="width:20px;height:20px;margin-right:12px;">
+                <span>Configuraciones</span>
+            </a>
+        </div>
+
+        <!-- Información del usuario y botón de salir -->
+        <div style="display:flex;align-items:center;padding:15px;border-top:1px solid #e0e0e0;">
+            <div style="flex:1;">
+                <p style="font-weight:500;margin:0;font-size:14px;">@Model.nombre @Model.apellido</p>
+                <p style="color:#666;margin:0;font-size:12px;">@Model.correo</p>
+            </div>
+            <button style="background:none;border:none;cursor:pointer;padding:5px;" onclick="logout()">
+                <img src="~/Imagenes/usuario/salir.png" alt="Salir" style="width:18px;height:18px;">
+            </button>
+        </div>
+    </div>
+
+    <!-- Carrusel principal -->
+    <div id="userCarousel" class="carousel slide" data-bs-ride="carousel" style="position:relative;height:30vh;overflow:hidden;margin-left:220px;width:calc(100% - 220px);">
+        <div class="carousel-inner" style="height:100%;">
+            <div class="carousel-item active" style="height:100%;">
+                <img src="~/Imagenes/usuario/perritos.png" class="d-block w-100" alt="Imagen 1" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            </div>
+            <div class="carousel-item" style="height:100%;">
+                <img src="~/Imagenes/usuario/gatos1.png.jpg" class="d-block w-100" alt="Imagen 2" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            </div>
+            <div class="carousel-item" style="height:100%;">
+                <img src="~/Imagenes/usuario/perritos2.png" class="d-block w-100" alt="Imagen 3" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#userCarousel" data-bs-slide="prev" style="position:absolute;top:50%;left:15px;transform:translateY(-50%);z-index:1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#userCarousel" data-bs-slide="next" style="position:absolute;top:50%;right:15px;transform:translateY(-50%);z-index:1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Información de perfil -->
+    <div style="text-align:center; margin-left: 220px; width: calc(100% - 220px); padding: 0 20px; box-sizing: border-box; position: relative;">
+        <!-- Logo del perfil posicionado a la izquierda y mitad en el borde -->
+        <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;border:2px solid #d98e2f;position:absolute;left:120px;top:-60px;z-index:10;">
+            <img src="~/Imagenes/usuario/mascota2.png" alt="Perfil" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <div style="display: inline-block; text-align: center; margin-top: 40px;">
+            <h3 id="sectionTitle" style="color:#d98e2f;margin:20px 0;">Información Personal</h3>
+            <p style="margin-bottom: 20px;">@Model.correo</p>
+
+            <div style="display: flex; justify-content: center; position: relative;">
+                <a href="#" class="nav-link active" style="text-decoration:none;color:#2E8B57;padding:10px 15px;position:relative;font-weight:bold;" onclick="setActive(this, 'sobreMi')">
+                    Sobre mí
+                    <span class="active-line" style="content:'';display:block;width:100%;height:2px;background:#2E8B57;position:absolute;left:0;bottom:-5px;"></span>
+                </a>
+                <a href="#" class="nav-link" style="text-decoration:none;color:black;padding:10px 15px;position:relative;" onclick="setActive(this, 'perfil')">
+                    Perfil
+                    <span class="inactive-line" style="content:'';display:block;width:0;height:2px;background:#2E8B57;position:absolute;left:50%;bottom:-5px;transition:all 0.3s ease;"></span>
+                </a>
+                <a href="#" class="nav-link" style="text-decoration:none;color:black;padding:10px 15px;position:relative;" onclick="setActive(this, 'contrasena')">
+                    Contraseña
+                    <span class="inactive-line" style="content:'';display:block;width:0;height:2px;background:#2E8B57;position:absolute;left:50%;bottom:-5px;transition:all 0.3s ease;"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de contenido -->
+    <div style="position:relative;margin-left:220px;width:calc(100% - 220px);min-height:50vh;overflow:visible;padding:0 20px;box-sizing:border-box;">
+        <div id="sobreMi" style="display:block;padding:20px;">
+            <div>
+                <h5 style="color:black;margin-top:20px;margin-left:20px;">Sobre mí</h5>
+                <p style="color:black;margin-top:20px;margin-left:20px;"> Hola, soy @Model.nombre @Model.apellido, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+
+                <div style="margin-top:30px;width:100%;">
+                    <h5 style="color:black;margin-top:20px;margin-left:20px;">Mascotas</h5>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; margin-left: 20px; width: 100%; overflow: hidden;">
+                        <div style="flex:1;min-width:0;">
+                            <img src="~/Imagenes/usuario/mascota1.png" alt="Mascota 1" style="width:100%;height:300px;object-fit:cover;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+                        </div>
+                        <div style="flex:1;min-width:0;">
+                            <img src="~/Imagenes/usuario/mascota2.png" alt="Mascota 2" style="width:100%;height:300px;object-fit:cover;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+                        </div>
+                        <div style="flex:1;min-width:0;">
+                            <img src="~/Imagenes/usuario/mascota3.png" alt="Mascota 3" style="width:100%;height:300px;object-fit:cover;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="perfil" style="display:none;padding:20px;">
+            <div>
+                @using (Html.BeginForm("UpdateProfile", "Usuarios", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.id_usuario)
+                    <!-- Sección para cambiar imagen de perfil -->
+                    <div style="width:100%;padding:20px;box-sizing:border-box;">
+                        <h3 style="font-size:1.5rem;margin-bottom:20px;text-align:center;">Cambiar imagen de perfil</h3>
+                        @if (!string.IsNullOrEmpty(Model.ruta_imagen))
+                        {
+                            <img src="@Url.Content(Model.ruta_imagen)" alt="Imagen de perfil actual" style="width:100%;height:30vh;object-fit:cover;border-radius:8px 8px 0 0;display:block;">
+                        }
+                        else
+                        {
+                            <img src="~/Imagenes/adopciones/fondoIndex.jpg" alt="Imagen de perfil actual" style="width:100%;height:30vh;object-fit:cover;border-radius:8px 8px 0 0;display:block;">
+                        }
+                        <input type="file" style="width:100%;padding:12px;background-color:#2E8B57;color:white;border:none;border-radius:0 0 8px 8px;font-size:1rem;cursor:pointer;transition:background-color 0.3s;margin-top:-1px;" name="profilePicture" accept="image/*" />
+                    </div>
+                }
+                <!-- Sección para cambiar las fotos en la portada -->
+                <div style="width:100%;padding:20px;box-sizing:border-box;">
+                    <h3 style="font-size:1.5rem;margin-bottom:20px;text-align:center;">Fotos en la portada</h3>
+                    <div style="width:100%;display:flex;gap:15px;margin-bottom:30px;">
+                        <!-- Columna 1 -->
+                        <div style="flex:1;display:flex;flex-direction:column;">
+                            <div style="width:100%;position:relative;">
+                                <img src="~/Imagenes/usuario/mascota1.png" alt="Portada 1" style="width:100%;height:200px;object-fit:cover;border-radius:8px 8px 0 0;display:block;">
+                                <input type="file" style="width:100%;padding:12px;background-color:#2E8B57;color:white;border:none;border-radius:0 0 8px 8px;font-size:1rem;cursor:pointer;transition:background-color 0.3s;margin-top:-1px;" name="cover1" accept="image/*" />
+                            </div>
+                        </div>
+
+                        <!-- Columna 2 -->
+                        <div style="flex:1;display:flex;flex-direction:column;">
+                            <div style="width:100%;position:relative;">
+                                <img src="~/Imagenes/usuario/mascota2.png" alt="Portada 2" style="width:100%;height:200px;object-fit:cover;border-radius:8px 8px 0 0;display:block;">
+                                <input type="file" style="width:100%;padding:12px;background-color:#2E8B57;color:white;border:none;border-radius:0 0 8px 8px;font-size:1rem;cursor:pointer;transition:background-color 0.3s;margin-top:-1px;" name="cover2" accept="image/*" />
+                            </div>
+                        </div>
+
+                        <!-- Columna 3 -->
+                        <div style="flex:1;display:flex;flex-direction:column;">
+                            <div style="width:100%;position:relative;">
+                                <img src="~/Imagenes/usuario/mascota3.png" alt="Portada 3" style="width:100%;height:200px;object-fit:cover;border-radius:8px 8px 0 0;display:block;">
+                                <input type="file" style="width:100%;padding:12px;background-color:#2E8B57;color:white;border:none;border-radius:0 0 8px 8px;font-size:1rem;cursor:pointer;transition:background-color 0.3s;margin-top:-1px;" name="cover3" accept="image/*" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contrasena" style="display: none; padding: 20px; margin-left: 20px;">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success" style="margin-bottom: 20px;">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @using (Html.BeginForm("ChangePassword", "Usuarios", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.id_usuario)
+
+                <h3 style="text-align: left; font-weight: bold; margin-bottom: 20px;">Contraseña</h3>
+                <p style="text-align: left; margin-bottom: 20px;">Ingrese su contraseña actual para cambiar su contraseña</p>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; text-align: left; font-weight: bold; margin-bottom: 8px;">Actual Contraseña</label>
+                    <input type="password" name="currentPassword" placeholder="Ingrese su contraseña actual"
+                           style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; text-align: left; font-weight: bold; margin-bottom: 8px;">Nueva Contraseña</label>
+                    <input type="password" name="newPassword" placeholder="La nueva contraseña debe tener más de 8 caracteres"
+                           style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required minlength="8">
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; text-align: left; font-weight: bold; margin-bottom: 8px;">Confirmar Nueva Contraseña</label>
+                    <input type="password" name="confirmPassword" placeholder="Confirme su nueva contraseña"
+                           style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required minlength="8">
+                </div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="button" style="background-color: #ccc; color: #333; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;"
+                            onclick="setActive(document.querySelector('.nav-link.active'), 'sobreMi')">
+                        Cancelar
+                    </button>
+                    <button type="submit" style="background-color: #0b3feb; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
+                        Actualizar Contraseña
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function setActive(link, sectionId) {
+            // Actualizar estilos de los enlaces
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(l => {
+                l.style.color = 'black';
+                l.style.fontWeight = 'normal';
+                // Ocultar todas las líneas
+                const line = l.querySelector('span');
+                if (line) {
+                    line.style.width = '0';
+                    line.style.left = '50%';
+                    line.classList.remove('active-line');
+                    line.classList.add('inactive-line');
+                }
+            });
+
+            // Resaltar el enlace activo
+            link.style.color = '#2E8B57';
+            link.style.fontWeight = 'bold';
+
+            // Mostrar la línea del enlace activo
+            const activeLine = link.querySelector('span');
+            if (activeLine) {
+                activeLine.style.width = '100%';
+                activeLine.style.left = '0';
+                activeLine.classList.add('active-line');
+                activeLine.classList.remove('inactive-line');
+            }
+
+            // Mostrar/ocultar secciones
+            const sections = document.querySelectorAll('[id="sobreMi"], [id="perfil"], [id="contrasena"]');
+            sections.forEach(s => {
+                s.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Cambiar el título según la sección
+            const titleElement = document.getElementById('sectionTitle');
+            switch (sectionId) {
+                case 'sobreMi':
+                    titleElement.textContent = 'Información Personal';
+                    break;
+                case 'perfil':
+                    titleElement.textContent = 'Editar Perfil';
+                    break;
+                case 'contrasena':
+                    titleElement.textContent = 'Configuraciones';
+                    break;
+            }
+        }
+
+        function logout() {
+        if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
+            // Crear un formulario dinámico para enviar la solicitud de logout
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '@Url.Action("Logout", "Usuarios")';
+
+            // Agregar el token anti-falsificación
+            var token = document.createElement('input');
+            token.type = 'hidden';
+            token.name = '__RequestVerificationToken';
+            token.value = $('input[name="__RequestVerificationToken"]').val();
+            form.appendChild(token);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+    </script>
+</body>
+</html>
