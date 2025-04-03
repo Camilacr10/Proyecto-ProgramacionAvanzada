@@ -18,8 +18,19 @@ namespace ProyectoPA.Controllers
         // GET: AdminMascotas
         public ActionResult Index()
         {
-            return View(db.Mascotas.ToList());
+            // Se implementa un try-catch para manejar errores
+            try
+            {
+                var mascotas = db.Mascotas.ToList();
+                return View(mascotas);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Error: No se pudieron cargar las mascotas.";
+                return View(); // Regresa la vista pero con mensaje de error
+            }
         }
+
 
         // GET: AdminMascotas/Details/5
         public ActionResult Details(int? id)

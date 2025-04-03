@@ -32,7 +32,7 @@ namespace ProyectoPA
         public string vacunado { get; set; }
         public string desparasitado { get; set; }
         public string descripcion { get; set; }
-        public Nullable<System.DateTime> fecha_rescate { get; set; }
+        public System.DateTime fecha_rescate { get; set; }
         public string ruta_imagen { get; set; }
         public string disponibilidad { get; set; }
     

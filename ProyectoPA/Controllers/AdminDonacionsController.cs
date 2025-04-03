@@ -17,8 +17,19 @@ namespace ProyectoPA.Controllers
         // GET: AdminDonacions
         public ActionResult Index()
         {
-            return View(db.Donacions.ToList());
+            // Se implementa un try-catch para manejar errores
+            try
+            {
+                var donacions = db.Donacions.ToList();
+                return View(donacions);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Error: No se pudieron cargar las donaciones.";
+                return View(); // Regresa la vista pero con mensaje de error
+            }
         }
+
 
         // GET: AdminDonacions/Details/5
         public ActionResult Details(int? id)
