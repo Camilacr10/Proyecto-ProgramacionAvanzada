@@ -1,0 +1,65 @@
+﻿@model ProyectoPA.Voluntario
+
+@{
+    ViewBag.Title = "Eliminar Voluntario";
+    Layout = "~/Views/AdminHome/Layout_Admin_Home.cshtml";
+}
+
+<h2 class="text-center my-4">Eliminar Voluntario</h2>
+
+<h3 class="text-danger">¿Está seguro que desea eliminar este voluntario?</h3>
+<div class="card p-4 mb-4 d-flex flex-column align-items-center mx-auto" style="max-width: 800px;">
+    <h4 class="mb-3 text-center">Detalles del Voluntario</h4>
+    <dl class="row d-flex justify-content-center">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Intereses)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Intereses)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger me-3" />
+            @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

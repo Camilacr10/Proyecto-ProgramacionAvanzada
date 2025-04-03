@@ -1,9 +1,125 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Acerca de Nosotros";
+    Layout = "~/Views/AdminHome/Layout_Customer.cshtml";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional information.</p>
-</main>
+<!-- Sección de bienvenida con imagen destacada -->
+<section class="position-relative text-white d-flex align-items-center" style="background: url('/imagenes/adopciones/fondoContacto.jfif') center/cover no-repeat; height: 70vh;">
+    <div class="container text-center">
+        <h1 class="display-3 fw-bold">Acerca de Nosotros</h1>
+        <div class="mt-4">
+            <a href="#contacto" class="btn btn-lg text-white"
+               style="background-color: #d98e2f; padding: 12px 24px; margin-right: 3%;
+                      width: 150px; height: 30px; text-align: center; line-height: 5px;
+                      transition: background-color 0.3s, color 0.3s, border 0.3s;
+                      border: 1px solid transparent;"
+               onmouseover="this.style.backgroundColor='rgba(217, 142, 47, 0)'; this.style.color='#d98e2f'; this.style.border='1px solid #d98e2f';"
+               onmouseout="this.style.backgroundColor='#d98e2f'; this.style.color='white'; this.style.border='1px solid transparent';">
+                Contáctanos
+            </a>
+            <a href="#informacion" class="btn btn-lg text-white"
+               style="background-color: #d98e2f; padding: 12px 24px;
+                      width: 150px; height: 30px; text-align: center; line-height: 5px;
+                      transition: background-color 0.3s, color 0.3s, border 0.3s;
+                      border: 1px solid transparent;"
+               onmouseover="this.style.backgroundColor='rgba(217, 142, 47, 0)'; this.style.color='#d98e2f'; this.style.border='1px solid #d98e2f';"
+               onmouseout="this.style.backgroundColor='#d98e2f'; this.style.color='white'; this.style.border='1px solid transparent';">
+                Información
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Cuerpo de la sección -->
+<section class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="~/imagenes/adopciones/gato4.png" class="img-fluid" style="width: 100%; max-width: 300px; height: auto;" alt="Nuestra Misión">
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div class="card-body text-start">
+                    <h3 class="fw-bold">Nuestra Misión</h3>
+                    <p>Ser un referente en la protección y bienestar animal, creando un mundo donde cada mascota tenga un hogar amoroso y responsable, y la adopción sea siempre la primera opción para todas las personas que deseen incorporar una mascota en sus vidas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center my-5">
+        <div class="col-md-6 order-md-2 text-center">
+            <img src="~/imagenes/adopciones/image (48).png" class="img-fluid" style="width: 100%; max-width: 300px; height: auto;" alt="Nuestra Visión">
+        </div>
+        <div class="col-md-6 order-md-1">
+            <div class="card" style="border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div class="card-body text-end">
+                    <h3 class="fw-bold">Nuestra Visión</h3>
+                    <p>Promover la adopción responsable de mascotas a través del rescate, rehabilitación y cuidado de animales abandonados o en situación de vulnerabilidad. Nos comprometemos a educar a la comunidad sobre la importancia del bienestar animal, esterilización y el respeto por la vida, fomentando un entorno en el que humanos y animales convivan de manera armoniosa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de contacto -->
+<section id="contacto" class="bg-light py-5">
+    <div class="container col-md-10">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="background-color: #ffffff; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Contáctanos</h4>
+                                <p class="form-label">Ingresa tus datos y te vamos a contactar lo más antes posible</p>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="correo" class="form-label">Correo</label>
+                                        <input type="email" class="form-control" id="correo" placeholder="Tu correo electrónico" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="mensaje" class="form-label">Mensaje</label>
+                                        <textarea class="form-control" id="mensaje" rows="3" placeholder="Escribe tu mensaje" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn" style="background-color: #f9c74f; color: #000; width: 100%;">Enviar</button>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card" style="background-color: #f9c74f; border: none; padding: 15px;">
+                                    <div class="card-body">
+                                        <h5>Info</h5>
+                                        <p><i class="fas fa-envelope"></i> salvandounaspatitas@gmail.com</p>
+                                        <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> San José, Costa Rica</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección del Mapa -->
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.894334806684!2d-84.09673648625775!3d9.859231709223897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2ae45ad12cf%3A0x7c7023c32dac7a38!2sAntes%20de%20Pal%C3%AD%20de%20Cinco%20Esquinas%20(por%20el%20puente)!5e0!3m2!1sen!2sus!4v1743296818565!5m2!1sen!2sus"
+                    width="100%"
+                    height="300"
+                    style="border: 0; border-radius: 8px; overflow: hidden;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Agregar animaciones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
