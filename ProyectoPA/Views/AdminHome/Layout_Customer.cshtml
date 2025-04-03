@@ -23,11 +23,14 @@
                 <a href="@Url.Action("Index", "Home")" class="navbar-brand text-light">
                     <img src="~/Imagenes/adopciones/logo.png" alt="Logo" style="width: 100px;">
                 </a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">@Html.ActionLink("Acerca de nosotros", "About", "Home", new { area = "" }, new { @class = "nav-link text-light" })</li>
-                    <li class="nav-item">@Html.ActionLink("Listados de Mascotas", "listado", "ListadoM", new { area = "" }, new { @class = "nav-link text-light" })</li>
-                    <li class="nav-item">@Html.ActionLink("Donaciones", "Index", "Donaciones", new { area = "" }, new { @class = "nav-link text-light" })</li>
-                    <li class="nav-item">@Html.ActionLink("Adopciones", "Index", "Adopcions", new { area = "" }, new { @class = "nav-link text-light" })</li>
+                <ul class="nav">
+                    <li class="nav-item"><a href="acercaNosotros.html" class="nav-link text-light">Acerca de Nosotros</a></li>
+                    <li class="nav-item"><a href="/ListadoM/listado" class="nav-link text-light">Listado de Mascotas</a></li>
+                    <li class="nav-item"><a href="/Donaciones/Index" class="nav-link text-light">Donaciones</a></li>
+                    <li class="nav-item">
+                        <a href="/Adopcions/Index" class="nav-link text-light">Adopciones</a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
