@@ -52,6 +52,8 @@
                                 <td>
                                     @Html.ActionLink("Editar", "Edit", new { id = item.id_adopcion }, new { @class = "btn btn-warning btn-sm" })
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.id_adopcion }, new { @class = "btn btn-danger btn-sm" })
+                                    <!-- Botón para ver detalles de la mascota adoptada -->
+                                    <button class="btn btn-info btn-sm detalles-adopcion-btn" data-id="@item.id_adopcion"> Ver Detalles </button>
                                 </td>
                             </tr>
                         }
@@ -61,3 +63,51 @@
         </div>
     </div>
 </section>
+
+@section scripts {
+    <script>
+        // Espera a que la página esté completamente cargada
+        $(document).ready(function () {
+
+            // Cuando se hace clic en un botón con clase "detalles-adopcion-btn"
+            $(".detalles-adopcion-btn").click(function () {
+
+                // Obtiene el ID de la adopción desde el atributo data-id del botón
+                var id = $(this).data("id");
+
+                // Verifica que el ID no esté vacío y sea un número
+                if (!id || isNaN(id)) {
+                    alert("ID de adopción no válido");
+                    return; // Sale de la función si no es válido
+                }
+
+                // Realiza una solicitud AJAX al servidor para obtener los datos de la adopción
+                $.ajax({
+                    url: `/AdminAdopcions/ObtenerDetallesAdopcion?id=${id}`, // Ruta del controlador
+                    method: "GET", // Método de solicitud
+
+                    // Si la solicitud fue exitosa
+                    success: function (response) {
+                        // Arma el contenido HTML con los datos recibidos
+                        var html = `
+                            <p><strong>ID de Adopción:</strong> ${response.id_adopcion}</p>
+                            <p><strong>Fecha de Adopción:</strong> ${response.fecha_adopcion}</p>
+                        `;
+
+                        // Inserta el contenido dentro del modal general
+                        $("#contenidoModalGeneral").html(html);
+
+                        // Muestra el modal en pantalla
+                        var modal = new bootstrap.Modal(document.getElementById('modalGeneral'));
+                        modal.show();
+                    },
+
+                    // Si ocurre un error en la solicitud
+                    error: function () {
+                        alert("Error al obtener detalles de la adopción");
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -69,6 +69,8 @@
                                 <td>
                                     @Html.ActionLink("Editar", "Edit", new { id = item.id_mascota }, new { @class = "btn btn-warning btn-sm" })
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.id_mascota }, new { @class = "btn btn-danger btn-sm" })
+                                    <!-- Botón de Detalles -->
+                                    <button class="btn btn-info btn-sm detalles-btn" data-id="@item.id_mascota"> Ver Detalles </button>
                                 </td>
                             </tr>
                         }
@@ -78,3 +80,59 @@
         </div>
     </div>
 </section>
+
+
+@section scripts {
+    <script>
+        // Espera a que la página cargue completamente
+        $(document).ready(function () {
+
+            // Cuando se hace clic en un botón con clase "detalles-btn"
+            $(".detalles-btn").click(function () {
+
+                // Obtiene el ID desde el atributo data-id del botón
+                var idMascota = $(this).data("id");
+
+                // Verifica que el ID sea válido (no vacío y sea un número)
+                if (!idMascota || isNaN(idMascota)) {
+                    alert("ID de la mascota no válido");
+                    return; // Sale de la función si no es válido
+                }
+
+                // Hace la petición AJAX al servidor para traer los detalles
+                $.ajax({
+                    url: `/AdminMascotas/ObtenerDetallesMascota?id=${idMascota}`,
+                    method: "GET",
+
+                    // Si la respuesta es exitosa
+                    success: (response) => {
+                        // Arma el contenido HTML con los datos de la mascota
+                        var detallesHTML = `
+                                <p><strong>Nombre:</strong> ${response.nombre}</p>
+                                <p><strong>Especie:</strong> ${response.especie}</p>
+                                <p><strong>Edad:</strong> ${response.edad}</p>
+                                <p><strong>Raza:</strong> ${response.raza}</p>
+                                <p><strong>Peso:</strong> ${response.peso}</p>
+                                <p><strong>Sexo:</strong> ${response.sexo}</p>
+                                <p><strong>Castrado:</strong> ${response.castrado}</p>
+                                <p><strong>Vacunado:</strong> ${response.vacunado}</p>
+                                <p><strong>Desparasitado:</strong> ${response.desparasitado}</p>
+                            `;
+
+                        // Inserta el contenido en el cuerpo del modal general
+                        $("#contenidoModalGeneral").html(detallesHTML);
+
+                        // Abre el modal general
+                        var modal = new bootstrap.Modal(document.getElementById('modalGeneral'));
+                        modal.show();
+                    },
+
+                    // Si ocurre un error
+                    error: (xhr, status, error) => {
+                        alert("Error al obtener los detalles de la mascota: " + error);
+                    }
+                });
+            });
+        });
+    </script>
+}

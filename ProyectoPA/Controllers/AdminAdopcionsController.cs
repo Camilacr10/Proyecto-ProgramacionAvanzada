@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using ProyectoPA;
 
 namespace ProyectoPA.Controllers
@@ -146,6 +147,28 @@ namespace ProyectoPA.Controllers
         public ActionResult MenuAdmin()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ObtenerDetallesAdopcion(int id) // Recibe el ID de una adopción
+        {
+            var adopcion = db.Adopcions.Find(id); // Busca la adopción en la base de datos
+
+            if (adopcion == null) // Si no la encuentra...
+            {
+                return HttpNotFound(); // ...devuelve error 404 (no encontrado)
+            }
+
+            // Creamos configuraciones para convertir a JSON
+            var settings = new JsonSerializerSettings
+            {
+                // Si hay datos que se repiten entre sí, los ignora (evita errores)
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+
+            var json = JsonConvert.SerializeObject(adopcion, settings); // Convierte la adopción a JSON
+
+            return Content(json, "application/json"); // Devuelve el JSON al navegador
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using ProyectoPA;
 
 namespace ProyectoPA.Controllers
@@ -141,6 +142,29 @@ namespace ProyectoPA.Controllers
         public ActionResult MenuAdmin()
         {
             return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult ObtenerDetallesMascota(int id) // Recibe el ID de una mascota
+        {
+            var mascota = db.Mascotas.Find(id); // Busca la mascota en la base de datos
+
+            if (mascota == null) // Si no la encuentra...
+            {
+                return HttpNotFound(); // ...devuelve error 404 (no encontrado)
+            }
+
+            // Creamos configuraciones para convertir a JSON
+            var settings = new JsonSerializerSettings
+            {
+                // Si hay datos que se repiten entre sí, los ignora (evita errores)
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+
+            var json = JsonConvert.SerializeObject(mascota, settings); // Convierte la mascota a JSON
+
+            return Content(json, "application/json"); // Devuelve el JSON al navegador
         }
     }
 }
